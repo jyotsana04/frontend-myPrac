@@ -1,0 +1,81 @@
+<div class="container">
+  <h1>Login Here</h1>
+  <hr>
+  <form  #loginForm="ngForm" (ngSubmit)="loginFunction()">
+
+    <div class="form-group" [class.has-error]="Email.invalid && Email.touched">
+      <label>Email</label>
+      <input type="email" class="form-control" required [(ngModel)]="email" name=email #Email="ngModel" placeholder="Enter email ID">
+      <span class="help-block" *ngIf="Email.errors?.required && Email.touched">Email is required</span>
+    </div>
+
+    <div class="form-group" [class.has-error]="pass.invalid && pass.touched">
+        <label>Password</label>
+        <input type="password" class="form-control" required [(ngModel)]="password" name=password #pass="ngModel" placeholder="Enter password">
+        <span class="help-block" *ngIf="pass.errors?.required && pass.touched">Password is required</span>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+      <button type="button" class="btn btn-link" [routerLink]="['/forgot']">Forgot Password?</button>
+    </div>
+
+
+  </form>
+</div>
+
+
+
+<!--<div class="row p-0 m-0">
+  
+    <div class="col-sm"></div>
+  
+    <div class="col-sm p-5">
+  
+      <h2 class="form-signin-heading">Please sign in</h2>
+  
+      <label for="inputEmail" class="sr-only">Email address</label>
+  
+      <input type="email" id="inputEmail" class="form-control" [(ngModel)]="email" placeholder="Email address" required autofocus>
+  
+      <br>
+  
+      <label for="inputPassword" class="sr-only">Password</label>
+  
+      <input type="password" id="inputPassword" class="form-control" [(ngModel)]="password" placeholder="Password" required>
+  
+      <br>
+  
+      <button class="btn btn-lg btn-primary btn-block" type="button" (click)="signinFunction()">Sign in</button>
+  
+    </div>
+    <div class="col-sm"></div>
+  
+</div>
+-->
+<!--
+<form action="action_page.php">
+  
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" class="button">Login</button>
+
+    
+  </div>
+
+  <div class="container">
+    <span>Not a registered user yet? Go to <a [routerLink]="['/signup']" style="font-size: 20px">Sign up</a></span>
+  </div>
+
+  <div class="container" >
+    
+    <button type="button" class="psw">Forgot Password?</button>
+  </div>
+</form>
+-->

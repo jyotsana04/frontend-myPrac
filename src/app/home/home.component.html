@@ -1,0 +1,53 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form #createMeetingForm='ngForm' (ngSubmit)="createMeeting()">
+
+                <div class="form-group">
+                    <label>Select date of meeting</label>
+                    <input type="text" bsDatepicker  name="dateOfMeeting" [(ngModel)]='dateOfMeeting'
+                        class="form-control" #date='ngModel' required>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Staff for meeting</label>
+                    <select [(ngModel)]="userForMeeting" #userForMeet="ngModel" name="userForMeeting" class="form-control"
+                    id="userSelect" required>
+                        <option *ngFor="let user of userStaff" [value]="user">{{user}}</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-success" [disabled]="!createMeetingForm.valid">Create meeting</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+<br/>
+<div class="container"> 
+    <h3>List of all the People/Staff</h3>
+    <div class="table-responsive" *ngIf='allUsers.length>0'>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>user id</th>
+                    <th>First Name</th>
+                    <th>Lastname</th>
+                    <th>Mobile No.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let user of allUsers'>
+                    <td>{{user.userId}}</td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.mobileNumber}}</td>
+                    <td><button class="btn btn-primary" [routerLink]="['/user',user.userId]">view</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
